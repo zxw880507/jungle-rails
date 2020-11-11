@@ -2,16 +2,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-
 // App
 @import "products";
-
-// Global
+@import "empty";
+// Global 
 body {
-  padding-top: 70px;
+    padding-top: 70px;
 }
 
 // Bootstrap adjustments
 form.button_to {
-  display: inline;
+    display: inline;
 }

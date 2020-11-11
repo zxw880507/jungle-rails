@@ -1,0 +1,11 @@
+.card-body {
+    margin-top: 200px;
+    padding: 30px;
+    background-color: transparent;
+    .btn-primary,
+    .btn-primary.disabled,
+    .btn-primary:disabled {
+        background-color: #4466f2 !important;
+        border-color: #4466f2 !important
+    }
+}
