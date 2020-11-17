@@ -20,6 +20,5 @@ RSpec.feature "Visitor navigates to product details page", type: :feature, js: t
     visit root_path
     click_on('Details', match: :first)
     expect(page).to have_css('.product-detail')
-    save_screenshot
   end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Visitor navigates to home page', type: :feature, js: true do
+RSpec.feature 'Visitor adds products to cart', type: :feature, js: true do
   # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
@@ -18,8 +18,10 @@ RSpec.feature 'Visitor navigates to home page', type: :feature, js: true do
     end
   end
 
-  scenario 'They see all products' do
+  scenario 'The cart in top nav should be updated to 1 if a product is added' do
     visit root_path
-    expect(page).to have_css 'article.product', count: 10
+    expect(page.find('nav', text: 'My Cart')).to have_content('0')
+    click_on('Add', match: :first)
+    expect(page.find('nav', text: 'My Cart')).to have_content('1')
   end
 end
