@@ -68,4 +68,5 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'launchy', '2.4.3'
 end
