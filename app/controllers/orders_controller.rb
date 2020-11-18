@@ -60,6 +60,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    OrderMailer.order_email(current_user, order).deliver_now
     order
   end
 end
