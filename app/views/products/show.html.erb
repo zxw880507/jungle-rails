@@ -23,9 +23,61 @@
           <dt>Price</dt>
           <dd><%= humanized_money_with_symbol @product.price %></dd>
         </dl>
+        <% if @user %>
+        <%= form_for [@product, @review] do |f| %>
+        <div class="form-group">
+          <%= f.label 'rating' %>
+          <%= f.select :rating, 1..5, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'description' %>
+          <%= f.text_area :description, rows: 5, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Write A Review', class: 'btn btn-primary' %>
+        <% end %>
+        <% end %>
       </div>
     </div>
 
   </article>
 
+  <div class="container">
+    <h1>Reviews</h1>
+    <div class="row">
+      <div class="col-sm-2">
+        <p><strong>Rating</strong></p>
+      </div>
+      <div class="col-sm-2">
+        <p><strong>User</strong></p>
+      </div>
+      <div class="col-sm-6">
+        <p>
+          <strong>Description</strong>
+        </p>
+      </div>
+      <div class="col-sm-2">
+
+      </div>
+    </div>
+    <% @reviews.each do |review| %>
+    <div class="row">
+      <div class="col-sm-2">
+        <p><%= review.rating %></p>
+      </div>
+      <div class="col-sm-2">
+        <p><%= review.user.full_name %></p>
+      </div>
+      <div class="col-sm-6">
+        <p>
+          <%= review.description %>
+        </p>
+      </div>
+      <% if review.user == @user then %>
+      <div class="col-sm-2">
+        <%= button_to  "Delete", [@product, review], method: :delete %>
+      </div>
+      <%end%>
+    </div>
+    <% end %>
+  </div>
 </section>
